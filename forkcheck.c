@@ -1,1 +1,26 @@
-//C Program to create new process using Linux API system calls fork() and exit()
+#include <stdlib.h>
+#include <sys/wait.h>
+#include<stdio.h>
+#include <sys/types.h>
+ int main()
+{       int status;
+        printf("Running ps with execlp\n");
+
+        wait(&status);
+        if (WIFEXITED(status))
+                printf("child exited with status of %d\n", WEXITSTATUS(status));
+        else
+                puts("child did not exit successfully\n");
+        printf("Done.\n");
+printf("Running ps with execlp. Now with path specified\n");
+        wait(&status);
+        if (WIFEXITED(status))
+                printf("child exited with status of %d\n", WEXITSTATUS(status));
+        else
+                puts("child did not exit successfully\n");
+        printf("Done.\n");
+        exit(0);}
+
+
+
+
